@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+}
+
+body {
+  /* position: relative;
+  height: 100%; */
+}
+
+.container {
+
+  /* position: absolute;
+  top: 20%;
+  right: 20%;
+  bottom: 20%;
+  left: 20%; */
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.cl-radio {
+  padding-left: 0px;
+  padding-right: 20px;
+  display: inline-block;
+  background: transparent url('../img/checked.png') no-repeat right top;
+  height: 19px;
+  line-height: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+  /* height: 100px; */
+}
+
+.group-panel label.checked{background-position: right bottom;}
+
+.cl-radio-checked {
+  background-position: right bottom;
+}
+
+input {
+  height: 30px;
+}
