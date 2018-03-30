@@ -17,4 +17,27 @@
     }).prev().hide();
   }
 
+  // 多选框
+  $.fn.clcheckbox = function(options){
+    $(':checkbox+label', this).each(function(i,v) {
+        $(this).addClass('checkbox');
+        if ($(this).prev().is(':disabled') === false) {
+          if($(this).prev().is(':checked')){
+            $(this).addClass("checked");
+          }
+        }else{
+          $(this).addClass('disabled');
+        }
+    }).click(function(event){
+      if (!$(this).prev().is(':checked')) {
+          $(this).addClass('checked');
+          $(this).prev().prop("checked", true);
+      }else{
+        $(this).removeClass('checked');
+        $(this).prev().prop("checked", false);
+      }
+      event.stopPropagation();
+    }).prev().hide();
+  }
+
 })(jQuery)
