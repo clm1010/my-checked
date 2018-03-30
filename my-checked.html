@@ -21,8 +21,14 @@
     </div>
 
     <h2>checkbox</h2>
-
-    <div>
+    <div id="Cl_CheckBoxList" class="cl-checkboxlist">
+      <input type="checkbox" name="" value="A组"><label for="" class="checkbox">A组</label>
+      <input type="checkbox" name="" value="B组"><label for="" class="checkbox">B组</label>
+      <input type="checkbox" name="" value="C组"><label for="" class="checkbox">C组</label>
+      <input type="checkbox" name="" value="D组"><label for="" class="checkbox">D组</label>
+      <input type="checkbox" name="" value="E组"><label for="" class="checkbox">E组</label>
+    </div>
+    <div class="cl-btn">
       <button id="OK_Btn" type="button" name="button">确认</button>
       <button id="Res_Btn" type="button" name="button">重置</button>
     </div>
@@ -32,9 +38,20 @@
   <script type="text/javascript">
     $(function() {
       $('#Cl_RadioList').clradio();
+      $('#Cl_CheckBoxList').clcheckbox();
 
+      var checkedValues = []; //临时存储 checkbox 值
       $('#OK_Btn').click(function() {
-        alert($("#Cl_RadioList :checked").val())
+        $('#Cl_CheckBoxList :checkbox').each(function() {
+          if ($(this).is(':checked')) {
+            checkedValues.push($(this).val());
+          }
+        });
+
+        alert($("#Cl_RadioList :checked").val());
+        alert(checkedValues.join(','));
+        // console.log(checkedValues)
+        checkedValues = [];
       });
 
       // 重置
@@ -42,6 +59,16 @@
         $('#Cl_RadioList > label').siblings().removeClass("cl-radio-checked");
         $('#Cl_RadioList > label').first().addClass("cl-radio-checked");
         $("#Cl_RadioList > input").first().prop("checked", true);
+
+        $('#Cl_CheckBoxList .checkbox').each(function() {
+          $(this).removeClass("checked");
+
+        });
+        $('#Cl_CheckBoxList :checkbox').each(function() {
+          $(this).prop('checked',false);
+        })
+        checkedValues = [];
+        // console.log(checkedValues)
       });
     });
   </script>
