@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>my-checked</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>radio</h1>
+    <div id="Cl_RadioList" class="cl-radiolist">
+      <input type="radio" name="r" id="reg_male" value="男" checked />
+      <label for="reg_male" class="cl-radio-checked">男：</label>
+      <input type="radio" name="r" id="reg_female" value="女" />
+      <label for="reg_female">女：</label>
+    </div>
+
+    <h2>checkbox</h2>
+
+    <div>
+      <button id="OK_Btn" type="button" name="button">确认</button>
+      <button id="Res_Btn" type="button" name="button">重置</button>
+    </div>
+  </div>
+  <script src="js/jquery.min.js" charset="utf-8"></script>
+  <script src="js/my-checked.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('#Cl_RadioList').clradio();
+
+      $('#OK_Btn').click(function() {
+        alert($("#Cl_RadioList :checked").val())
+      });
+
+      // 重置
+      $('#Res_Btn').click(function(event) {
+        $('#Cl_RadioList > label').siblings().removeClass("cl-radio-checked");
+        $('#Cl_RadioList > label').first().addClass("cl-radio-checked");
+        $("#Cl_RadioList > input").first().prop("checked", true);
+      });
+    });
+  </script>
+</body>
+
+</html>
